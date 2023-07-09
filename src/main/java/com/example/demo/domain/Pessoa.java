@@ -1,21 +1,54 @@
 package com.example.demo.domain;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import com.example.demo.domain.enums.Perfil;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-public abstract class Pessoa {
+//Criar uma tabela
+@Entity
+public abstract class Pessoa implements Serializable{
 
+    private static final long serialVersionUID = 1L;
+    
+    //Ele será reconhecido como um ID no banco
+    @Id
+    //Irá criar automaticamente
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
     protected String nome;
+    
+    //Significa que essa coluna será única
+    @Column(unique = true)
     protected String cpf;
     protected String senha;
+    
+    //Significa que essa coluna será única
+    @Column(unique = true)
     protected String email;
+    
+    //É um coleção de Integer, tem que vim junto com o usuario
+    @ElementCollection(fetch = FetchType.EAGER)
+    //Irá criar uma tabela de PERFIS
+    @CollectionTable(name = "PERFIS")
     protected Set<Integer> perfis = new HashSet<>();
+    
+    //Criar um padrão de data
+    @JsonFormat(pattern = "dd/MM/yyyy")
     protected LocalDate dataCriacao = LocalDate.now();
 
     public Pessoa() {

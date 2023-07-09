@@ -1,29 +1,61 @@
 package com.example.demo.domain;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import com.example.demo.domain.enums.Prioridade;
 import com.example.demo.domain.enums.Status;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class Chamado {
+//Criar uma tabela
+@Entity
+public class Chamado  implements Serializable{
 
+    private static final long serialVersionUID = 1L;
+    
+    //Ele será reconhecido como um ID no banco
+    @Id
+    //Irá criar automaticamente
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    
+    //Criar um padrão de data
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataAbertura = LocalDate.now();
-    private LocalDate dataFechamento = LocalDate.now();
+    
+    //Criar um padrão de data
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dataFechamento;
+    
+    
     private Prioridade prioridade;
     private Status status;
     private String titulo;
     private String observacoes;
 
-    private Tecnico tecino;
+    //Muitos para um
+    @ManyToOne
+    @JoinColumn(name = "tecnico_id")
+    private Tecnico tecnico;
+    
+    //Muitos para um
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
     public Chamado() {
         super();
     }
 
-    public Chamado(Integer id, Prioridade prioridade, Status status, String titulo, String observacoes, Tecnico tecino,
+    public Chamado(Integer id, Prioridade prioridade, Status status, String titulo, String observacoes, Tecnico tecnico,
             Cliente cliente) {
         super();
         this.id = id;
@@ -31,7 +63,7 @@ public class Chamado {
         this.status = status;
         this.titulo = titulo;
         this.observacoes = observacoes;
-        this.tecino = tecino;
+        this.tecnico = tecnico;
         this.cliente = cliente;
     }
 
@@ -92,11 +124,11 @@ public class Chamado {
     }
 
     public Tecnico getTecino() {
-        return tecino;
+        return tecnico;
     }
 
-    public void setTecino(Tecnico tecino) {
-        this.tecino = tecino;
+    public void setTecino(Tecnico tecnico) {
+        this.tecnico = tecnico;
     }
 
     public Cliente getCliente() {
