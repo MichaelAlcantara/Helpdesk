@@ -1,11 +1,13 @@
 package com.michael.helpdesk.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.michael.helpdesk.domain.Tecnico;
+import com.michael.helpdesk.domain.dtos.TecnicoDTO;
 import com.michael.helpdesk.repositories.TecnicoRepository;
 import com.michael.helpdesk.services.exceptions.ObjectnotFoundException;
 
@@ -18,6 +20,10 @@ public class TecnicoService {
 	public Tecnico findById(Integer id) {
 		Optional<Tecnico> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectnotFoundException("Objeto não encontrado! ID: "+id));
+	}
+
+	public List<Tecnico> findAll() {
+		return repository.findAll();
 	}
 	
 }
