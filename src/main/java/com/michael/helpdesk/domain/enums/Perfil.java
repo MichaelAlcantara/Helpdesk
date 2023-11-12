@@ -1,13 +1,13 @@
-package com.example.demo.domain.enums;
+package com.michael.helpdesk.domain.enums;
 
-public enum Prioridade {
+public enum Perfil {
 
-    BAIXO(0, "BAIXO"), MEDIO(1, "MEDIO"), ALTO(2, "ALTO");
+    ADMIN(0, "ROLE_ADMIN"), CLIENTE(1, "ROLE_CLIENTE"), TECNICO(2, "ROLE_TECNICO");
 
     private Integer codigo;
     private String descricao;
 
-    private Prioridade(Integer codigo, String descricao) {
+    private Perfil(Integer codigo, String descricao) {
         this.codigo = codigo;
         this.descricao = descricao;
     }
@@ -20,16 +20,16 @@ public enum Prioridade {
         return descricao;
     }
 
-    public static Prioridade toEnum(Integer cod) {
+    public static Perfil toEnum(Integer cod) {
         if (cod == null) {
             return null;
         }
-        for (Prioridade x : Prioridade.values()) {
+        for (Perfil x : Perfil.values()) {
             if (cod.equals(x.getCodigo())) {
                 return x;
             }
         }
         
-        throw new IllegalArgumentException("Prioridade inválida!");
+        throw new IllegalArgumentException("Perfil inválido!");
     }
 }

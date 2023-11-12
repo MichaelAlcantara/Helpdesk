@@ -1,19 +1,19 @@
-package com.example.demo.services;
+package com.michael.helpdesk.services;
 
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.domain.Chamado;
-import com.example.demo.domain.Cliente;
-import com.example.demo.domain.Tecnico;
-import com.example.demo.domain.enums.Perfil;
-import com.example.demo.domain.enums.Prioridade;
-import com.example.demo.domain.enums.Status;
-import com.example.demo.repositories.ChamadoRepository;
-import com.example.demo.repositories.ClienteRepository;
-import com.example.demo.repositories.TecnicoRepository;
+import com.michael.helpdesk.domain.Chamado;
+import com.michael.helpdesk.domain.Cliente;
+import com.michael.helpdesk.domain.Tecnico;
+import com.michael.helpdesk.domain.enums.Perfil;
+import com.michael.helpdesk.domain.enums.Prioridade;
+import com.michael.helpdesk.domain.enums.Status;
+import com.michael.helpdesk.repositories.ChamadoRepository;
+import com.michael.helpdesk.repositories.ClienteRepository;
+import com.michael.helpdesk.repositories.TecnicoRepository;
 
 //Significa que é uma classe de serviços
 @Service

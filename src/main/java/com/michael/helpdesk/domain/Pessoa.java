@@ -1,4 +1,4 @@
-package com.example.demo.domain;
+package com.michael.helpdesk.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -16,8 +16,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.example.demo.domain.enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.michael.helpdesk.domain.enums.Perfil;
 
 //Criar uma tabela
 @Entity
