@@ -2,11 +2,13 @@ package com.michael.helpdesk.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.michael.helpdesk.domain.dtos.TecnicoDTO;
 import com.michael.helpdesk.domain.enums.Perfil;
 
 //Criar uma tabela
@@ -25,13 +27,24 @@ public class Tecnico extends Pessoa {
         super();
         addPerfil(Perfil.TECNICO);
     }
-
+    
     public Tecnico(Integer id, String nome, String cpf, String senha, String email) {
         super(id, nome, cpf, senha, email);
         addPerfil(Perfil.TECNICO);
     }
 
-    public List<Chamado> getChamados() {
+    public Tecnico(TecnicoDTO obj) {
+    	super();
+		this.id = obj.getId();
+		this.nome = obj.getNome();
+		this.cpf = obj.getCpf();
+		this.senha = obj.getSenha();
+		this.email = obj.getEmail();
+		this.perfis = obj.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
+		this.dataCriacao = obj.getDataCriacao();
+	}
+
+	public List<Chamado> getChamados() {
         return chamados;
     }
 
