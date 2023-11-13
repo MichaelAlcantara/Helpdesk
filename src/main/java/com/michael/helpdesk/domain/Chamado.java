@@ -123,11 +123,11 @@ public class Chamado  implements Serializable{
         this.observacoes = observacoes;
     }
 
-    public Tecnico getTecino() {
+    public Tecnico getTecnico() {
         return tecnico;
     }
 
-    public void setTecino(Tecnico tecnico) {
+    public void setTecnico(Tecnico tecnico) {
         this.tecnico = tecnico;
     }
 
