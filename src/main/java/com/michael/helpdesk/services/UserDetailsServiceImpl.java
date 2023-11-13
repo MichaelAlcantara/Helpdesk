@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 
 import com.michael.helpdesk.domain.Pessoa;
 import com.michael.helpdesk.repositories.PessoaRepository;
-import com.michael.helpdesk.segurity.UserSS;
+import com.michael.helpdesk.security.UserSS;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService{
-	
+
 	@Autowired
 	private PessoaRepository repository;
 

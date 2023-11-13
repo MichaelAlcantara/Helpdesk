@@ -1,4 +1,4 @@
-package com.michael.helpdesk.segurity;
+package com.michael.helpdesk.security;
 
 import java.util.Collection;
 import java.util.Set;
@@ -11,9 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.michael.helpdesk.domain.enums.Perfil;
 
 public class UserSS implements UserDetails {
+	private static final long serialVersionUID = 1L;
 
-	private static final long serialVersionUID = -1L;
-	
 	private Integer id;
 	private String email;
 	private String senha;

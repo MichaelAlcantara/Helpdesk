@@ -1,4 +1,4 @@
-package com.michael.helpdesk.segurity;
+package com.michael.helpdesk.security;
 
 import java.util.Date;
 
@@ -10,13 +10,13 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 @Component
 public class JWTUtil {
-	
+
 	@Value("${jwt.expiration}")
 	private Long expiration;
-	
+
 	@Value("${jwt.secret}")
-	private String secret; 
-	
+	private String secret;
+
 	public String generateToken(String email) {
 		return Jwts.builder()
 				.setSubject(email)
@@ -24,5 +24,4 @@ public class JWTUtil {
 				.signWith(SignatureAlgorithm.HS512, secret.getBytes())
 				.compact();
 	}
-
 }
