@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.lang.NonNull;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.michael.helpdesk.domain.Chamado;
 
 public class ChamadoDTO  implements Serializable{
@@ -14,7 +15,9 @@ public class ChamadoDTO  implements Serializable{
     private static final long serialVersionUID = 1L;
     
 	private Integer id;
+    @JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataAbertura = LocalDate.now();
+    @JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataFechamento;
 	@NotNull(message = "O campo PRIORIDADE é requerido!")
 	private Integer prioridade;
